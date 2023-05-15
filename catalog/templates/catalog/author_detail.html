@@ -1,9 +1,26 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Title: {{ book.title }}</h1>
+  <h1> {{ author.first_name }} {{ author.last_name }}</h1>
+{% if author.date_of_death != None %}
+<p> {{author.date_of_birth}} - {{author.date_of_death}}</p>
+{% else %}
+<p> {{author.date_of_birth}}</p>
+{% endif %}
 
-  <p><strong>Author:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
+<div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+    {% for book in author.book_set.all %}
+        <hr />
+        <p><strong>{{book.title}}</strong></p>
+        <p>{{book.summary}}</p>
+        <p><strong>{{book.display_genre}}</strong></p>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+  <!-- <p><strong>Author:</strong> <a href="{% url 'author-detail' book.author.pk %}">{{ book.author }}</a></p>
   <p><strong>Summary:</strong> {{ book.summary }}</p>
   <p><strong>ISBN:</strong> {{ book.isbn }}</p>
   <p><strong>Language:</strong> {{ book.language }}</p>
@@ -24,5 +41,4 @@
       <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
       <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
     {% endfor %}
-  </div>
-{% endblock %}
+  </div> -->

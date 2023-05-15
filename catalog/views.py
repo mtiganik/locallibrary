@@ -24,19 +24,14 @@ def index(request):
 # Generic class way
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 2
+    paginate_by = 3
 
-    # def get_queryset(self):
-    #     return Book.objects.filter(title__icontains='war')[:5]
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super(BookListView,self).get_context_data(**kwargs)
-    #     context['some_data'] = 'This is just some data'
-    #     return context
+
+class AuthorListView(generic.ListView):
+    model = Author
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
 
 class BookDetailView(generic.DetailView):
     model = Book
-
-# def book_detail_view(request, primary_key):
-#     book = get_object_or_404(Book, pk=primary_key)
-#     return render(request, 'catalog/book_detail.html', context={'book': book})
