@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from .models import Book, Author, BookInstance, Genre
 from django.shortcuts import render
 from django.views import generic
@@ -24,6 +26,18 @@ def index(request):
     }
 
     return render(request, 'index.html', context=context)
+
+class AllBorrowedListView(LoginRequiredMixin, generic.ListView):
+    template_name = 'catalog/all_borrowed_list.html'
+    permission_required = ('catalog.can_mark_returned', 'catalog.can_edit')
+
+    model = BookInstance
+    def get_queryset(self):
+        return(
+            BookInstance.objects.filter(status__exact='o').order_by('due_back')
+        )
+    # model = BookInstance.objects.filter(status__exact='o').order_by('due_back')
+
 
 class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
