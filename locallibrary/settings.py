@@ -29,9 +29,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '#ulap-bop+fr_$*38+0hz=%pyr$cna)f)mjdy
 # DEBUG = True
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['web-production-4e6d.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['https://web-production-4e6d.up.railway.app/', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS  = ['web-production-4e6d.up.railway.app']
+CSRF_TRUSTED_ORIGINS  = ['https://web-production-4e6d.up.railway.app/', 'http://127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [

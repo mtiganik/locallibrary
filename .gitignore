@@ -7,5 +7,5 @@
 catalog/tests/__pycache__/test_views.cpython-311.pyc
 locallibrary/__pycache__/settings.cpython-311.pyc
 
-staticfiles/
+# staticfiles/
 .env
