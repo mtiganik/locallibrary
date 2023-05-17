@@ -1,9 +1,4 @@
 {% extends "base_generic.html" %}
-
-
-
-
-
 {% block content %}
 <h1>Borrowed book list</h1>
 {% if bookinstance_list %}
@@ -13,13 +8,17 @@
         <span><a href="{{ instance.book.get_absolute_url }}">{{ instance.book }} </a>
             <span class="{% if instance.is_overdue %}text-danger{% endif %}">
                 ({{ instance.due_back }}) - {{instance.borrower}}</span> 
+                {% if user.is_staff %}
+                    <a href="{% url 'renew-book-librarian' instance.id %}">Renew</a>
+                {% endif %}
             </span>
         </li>
         {% endfor %}
 
     </ul>
 {% else %}
-  <p>There are no authors in the library.</p>
+  <p>There are no books borrowed.</p>
 {% endif %}
 {% endblock %}
 
+  

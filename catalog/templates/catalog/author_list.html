@@ -2,11 +2,16 @@
 
 {% block content %}
   <h1>Authors List</h1>
+  {% if user.is_staff %}
+   
+    <a href="{% url 'author-create' %}"><button>Add author</button></a>
+  {% endif %}
   {% if author_list %}
     <ul>
       {% for author in author_list %}
       <li>
-        <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a>
+        <a href="{{ author.get_absolute_url }}">{{ author.first_name }} {{ author.last_name }}</a> |
+        <a href="{% url  'author-update' author.id %}">Edit</a> | <a href="{% url  'author-delete' author.id %}">Delete</a>
       </li>
       {% endfor %}
     </ul>
@@ -14,3 +19,4 @@
     <p>There are no authors in the library.</p>
   {% endif %}
 {% endblock %}
+
