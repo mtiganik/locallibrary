@@ -22,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
-SECRET_KEY = os.environ.get('SECRET_KEY', '#ulap-bop+fr_$*38+0hz=%pyr$cna)f)mjdy+s7*xahz354-+')
+SECRET_KEY = 'django-insecure-#ulap-bop+fr_$*38+0hz=%pyr$cna)f)mjdy+s7*xahz354-+'
+# SECRET_KEY = os.environ.get('SECRET_KEY', '#ulap-bop+fr_$*38+0hz=%pyr$cna)f)mjdy+s7*xahz354-+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -135,6 +135,6 @@ LOGIN_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Update database configuration from $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
